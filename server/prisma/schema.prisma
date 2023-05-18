@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// TABELA DO BANCO DE DADO
+//dados do usuário
+model User {
+  //indica para o prisma que @id será a chave primária da tabela, isso vai ajudar quando precisar encontrar um usuário pelo seu id.
+  // o @default(uuid()) vai gerar um id único para cada usuário
+  id       String @id @default(uuid())
+  githubId Int    @unique
+  nome     String
+  login    String
+  avatar   String
+
+  Memory Memory[] //cria um relacionamento entre o User e a Memory
+}
+
+///para criar essa tabela no banco de dados, deve rodar o bloco de código do item 7 de readme
+
+//Memórias registradas
+model Memory {
+  id     String @id @default(uuid())
+  userId String
+
+  coverUrl  String
+  content   String
+  isPublic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id]) //cria um relacionamento entre o User e a Memory
+}

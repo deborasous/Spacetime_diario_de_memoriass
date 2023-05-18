@@ -1,0 +1,43 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "min 19",
+  "main": "./lib/index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "prepublish": "npm run build"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Debora"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deborasous/Spacetime_memorias.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deborasous/Spacetime_memorias/issues"
+  },
+  "homepage": "https://github.com/deborasous/Spacetime_memorias#readme",
+  "devDependencies": {
+    "@types/node": "^20.1.5",
+    "prisma": "^4.14.0",
+    "tslint": "^6.1.3",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  },
+  "files": [
+    "./bin/*",
+    "./lib/*"
+  ],
+  "typings": "./lib/index.d.ts",
+  "dependencies": {
+    "@fastify/cors": "^8.2.1",
+    "@prisma/client": "^4.14.0",
+    "fastify": "^4.17.0",
+    "zod": "^3.21.4"
+  }
+}
